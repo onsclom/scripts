@@ -1,0 +1,1 @@
+ffmpeg -i $1 -vf "fps=30,palettegen=stats_mode=diff" -y palette.png && ffmpeg -i $1 -i palette.png -lavfi "fps=30 [x]; [x][1:v]paletteuse=dither=none" -y output.gif && gifsicle -O3 output.gif -o output-opt.gif
